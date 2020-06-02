@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/App.css';
+
 import Content from '../components/Content';
 
 function App() {
@@ -9,3 +10,4 @@ function App() {
 }
 
 export default App;
+
