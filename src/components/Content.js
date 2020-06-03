@@ -1,15 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import CardsPokemon from './CardsPokemon';
-import CardGroup from 'react-bootstrap/CardGroup'
+import CardGroup from 'react-bootstrap/CardGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import {Form, Button, FormControl} from 'react-bootstrap'
 
 const Content = () => {
 
-    let [pokemons,setPokemons]= useState([
-
-    ])
+    let [pokemons,setPokemons]= useState([])
+    let [pokeBackup,setPokeBackup] = useState([])
 
     useEffect(()=>{
       let array = []
@@ -19,21 +17,33 @@ const Content = () => {
             let data = await response.json()
             array.push(data)
         }
-
         setPokemons(array)
+        setPokeBackup(array)
       }
       fetchData()  
     },[])
 
-    
+    const handleChange=(e)=>{
+        let names = e.target.value
+        const data = pokeBackup
+        const result =data.filter(pokemon=>
+        pokemon.name.indexOf(names)>-1) 
+        setPokemons(result)
+    }
+
     return (
      
 
         <div>
           <h1>Pokedex</h1>
-          <div className="container-fluid">
-           <CardGroup>
+          <Form inline>
+                <FormControl type="text" placeholder="Search" className=" mr-sm-2" onChange={handleChange} />
+                <Button type="submit">Submit</Button>
+            </Form>
+            <div className="container-fluid">
             <div className="row ">
+              <div className="col-12">
+           <CardGroup>             
             {pokemons.map((pokemon, index)=>{
               return  <CardsPokemon 
                 key = {index}
@@ -46,8 +56,10 @@ const Content = () => {
             })}
                             
 
-            </div>
+            
            </CardGroup>
+           </div>
+           </div>
            </div>
         </div>
         

@@ -15,7 +15,7 @@ const CardsPokemon = ({name,picture,number,types}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
     return ( 
-        <div className="col-8 col-sm-4 col-md-2 mt-4">
+        <div className="col-12 col-sm-6 col-md-3 mt-4">
     <Card onClick={handleShow} className="card border-primary">
     <Card.Img className="img-fluid rounded mx-auto d-block " style={{ width: '60%'}} variant="top" src={picture} />
     <Card.Body className="text-primary card border-primary">
