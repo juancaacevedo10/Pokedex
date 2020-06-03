@@ -1,13 +1,11 @@
-import React from 'react';
-import '../styles/App.css';
+import React from 'react'
+import '../styles/App.css'
+import Content from '../components/Content'
 
-import Content from '../components/Content';
-
-function App() {
+function App () {
   return (
     <Content />
-  );
+  )
 }
 
-export default App;
-
+export default App
