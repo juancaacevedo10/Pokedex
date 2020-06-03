@@ -2,18 +2,25 @@ import React, { useState, useEffect } from 'react'
 import CardsPokemon from './CardsPokemon'
 import CardGroup from 'react-bootstrap/CardGroup'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form, Button, FormControl } from 'react-bootstrap'
+import { Form, FormControl } from 'react-bootstrap'
 import Loading from './Loading'
 
 const Content = () => {
-
-  let [pokemons, setPokemons] = useState([])
-  let [pokeBackup, setPokeBackup] = useState([])
-  let [evolution, setEvolution] = useState([])
-  let [loading, setLoading] = useState(false)
+  const [data, setData] = useState({
+    pokemons: [],
+    pokeBackup: [],
+    evolution: [],
+    loading: false
+  })
+  // let [pokemons, setPokemons] = useState([])
+  // let [pokeBackup, setPokeBackup] = useState([])
+  // let [evolution, setEvolution] = useState([])
+  // let [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true)
+    setData({
+      loading: true
+    })
     const arrayPokemon = []
     const arrayEvolution = []
     const fetchData = async () => {
@@ -25,42 +32,48 @@ const Content = () => {
         const dataEvolution = await responseEvolution.json()
         arrayEvolution.push(dataEvolution)
       }
-      setPokemons(arrayPokemon)
-      setPokeBackup(arrayPokemon)
-      setEvolution(arrayEvolution)
       setTimeout(() => {
-        setLoading(false)
+        setData({
+          pokemons: arrayPokemon,
+          pokeBackup: arrayPokemon,
+          evolution: arrayEvolution,
+          loading: false
+        })
       }, 1500)
     }
     fetchData()
-
   }, [])
 
   const handleChange = (e) => {
     const names = e.target.value
-    const data = pokeBackup
-    const result = data.filter(pokemon =>
+    const info = data.pokeBackup
+    const result = info.filter(pokemon =>
       pokemon.name.indexOf(names) > -1)
-    setPokemons(result)
+    setData({
+      pokemons: result
+    })
   }
 
+<<<<<<< HEAD
 
   if (loading) {
+=======
+  if (data.loading) {
+>>>>>>> 6fb3da1b4a90ea5cc6de7462a26b2b1e24ddbfc9
     return <Loading />
   }
   return (
 
     <div>
-      <h1>Pokedex</h1>
+      <h1 className='text-center'>Pokedex</h1>
       <Form inline>
-        <FormControl type='text' placeholder='Search' className=' mr-sm-2' onChange={handleChange} />
-        <Button type='submit'>Submit</Button>
+        <FormControl type='text' placeholder='Search' className=' mr-sm-3' onChange={handleChange} />
       </Form>
       <div className='container-fluid'>
         <div className='row '>
           <div className='col-12'>
             <CardGroup>
-              {pokemons.map((pokemon, index) => {
+              {data.pokemons.map((pokemon, index) => {
                 return <CardsPokemon
                   key={index} name={pokemon.name}
                   picture={pokemon.sprites.front_default}
@@ -70,7 +83,7 @@ const Content = () => {
                   pictureBack={pokemon.sprites.back_default}
                   weightPokemon={pokemon.weight}
                   heightPokemon={pokemon.height}
-                  evolution={evolution.chain}
+                  evolution={data.evolution[index].chain}
                 />
               })}
             </CardGroup>
