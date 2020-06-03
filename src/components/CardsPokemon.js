@@ -15,7 +15,7 @@ const CardsPokemon = ({name,picture,number,types}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
     return ( 
-        <div className="col-12 col-sm-6 col-md-3 mt-4">
+    <div className="col-12 col-sm-6 col-md-3 mt-4">
     <Card onClick={handleShow} className="card border-primary">
     <Card.Img className="img-fluid rounded mx-auto d-block " style={{ width: '60%'}} variant="top" src={picture} />
     <Card.Body className="text-primary card border-primary">
@@ -25,12 +25,12 @@ const CardsPokemon = ({name,picture,number,types}) => {
       </Card.Text>
     </Card.Body>
     <Card.Footer className="bg-primary">
-    <small className="text-white">Type: {types.map((tipos)=> {return  `( ${tipos.type.name} ) `} ) }
+    <small id="list-types" className="text-white">{types.map((tipos,key)=> {return  <Button key={key+1} className="ml-3" variant="outline-light"> {tipos.type.name} </Button> } ) }
      </small>
     </Card.Footer>
   </Card>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal  show={show} onHide={handleClose}>
         <Modal.Header closeButton>
     <Modal.Title> Nombre: {name}</Modal.Title>
         </Modal.Header>
@@ -42,7 +42,7 @@ const CardsPokemon = ({name,picture,number,types}) => {
             <Card.Img className="img-fluid rounded mx-auto d-block " style={{ width: '60%'}} variant="top" src={picture} />
             </Col>
             <Col xs={6} md={4}>
-            Id/ {number} 
+            Id/  {number} 
             </Col>
           </Row>
 
