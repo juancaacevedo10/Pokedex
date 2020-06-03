@@ -1,53 +1,74 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
-import DetailsPokemon from './DetailsPokemon'
+import Card from 'react-bootstrap/Card'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 
-const useStyles = makeStyles({
-    root: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 140,
-    },
-  });
-  
-    
 
-const CardsPokemon = () => {
-    const classes = useStyles();
+const CardsPokemon = ({name,picture,number,types}) => {
+    const [show, setShow] = React.useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
     return ( 
-        <>
-        <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://vignette.wikia.nocookie.net/mario/images/a/a0/Pikachu_SSB4.png/revision/latest/scale-to-width-down/310?cb=20130611183913&path-prefix=es"
-          title="Pokemon"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-              ID
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-          Nombre
-            </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-           tipo 
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-      </CardActions>
-    </Card>
-    
-</>
+        <div className="col-8 col-sm-4 col-md-2 mt-4">
+    <Card onClick={handleShow} className="card border-primary">
+    <Card.Img className="img-fluid rounded mx-auto d-block " style={{ width: '60%'}} variant="top" src={picture} />
+    <Card.Body className="text-primary card border-primary">
+    <Card.Title>ID/{number}</Card.Title>
+      <Card.Text>
+      Name:  {name}
+      </Card.Text>
+    </Card.Body>
+    <Card.Footer className="bg-primary">
+    <small className="text-white">Type: {types.map((tipos)=> {return  `( ${tipos.type.name} ) `} ) }
+     </small>
+    </Card.Footer>
+  </Card>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+    <Modal.Title> Nombre: {name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="show-grid">
+            
+        <Container>
+          <Row>
+            <Col xs={12} md={6}>
+            <Card.Img className="img-fluid rounded mx-auto d-block " style={{ width: '60%'}} variant="top" src={picture} />
+            </Col>
+            <Col xs={6} md={4}>
+            Id/ {number} 
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs={6} md={4}>
+            <p>Type: 
+            {types.map((tipos)=> {return ` ${tipos.type.name} `} ) }</p>
+            </Col>
+            <Col xs={6} md={4}>
+              .col-xs-6 .col-md-4
+            </Col>
+            <Col xs={6} md={4}>
+              .col-xs-6 .col-md-4
+            </Col>
+          </Row>
+        </Container>
+
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          
+        </Modal.Footer>
+      </Modal>
+  </div>
     )
 }
  

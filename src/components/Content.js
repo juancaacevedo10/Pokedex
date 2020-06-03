@@ -1,5 +1,9 @@
 import React,{useState,useEffect} from 'react';
 import CardsPokemon from './CardsPokemon';
+import CardGroup from 'react-bootstrap/CardGroup'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 const Content = () => {
 
@@ -23,8 +27,13 @@ const Content = () => {
 
     
     return (
+     
+
         <div>
-            <h1>Pokedex</h1>
+          <h1>Pokedex</h1>
+          <div className="container-fluid">
+           <CardGroup>
+            <div className="row ">
             {pokemons.map((pokemon, index)=>{
               return  <CardsPokemon 
                 key = {index}
@@ -32,10 +41,17 @@ const Content = () => {
                 picture = {pokemon.sprites.front_default}
                 number = {pokemon.id}
                 types = {pokemon.types}
+                
                 />
             })}
-           
+                            
+
+            </div>
+           </CardGroup>
+           </div>
         </div>
+        
+
       );
 }
  
