@@ -7,9 +7,8 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-const CardsPokemon = ({ name, picture, number, types }) => {
+const CardsPokemon = ({ name, picture, number, types, abilities, pictureBack, weightPokemon, heightPokemon, evolution }) => {
   const [show, setShow] = React.useState(false)
-
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   return (

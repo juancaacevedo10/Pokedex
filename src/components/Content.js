@@ -44,7 +44,6 @@ const Content = () => {
     setPokemons(result)
   }
 
-  console.log(evolution)
 
   if (loading) {
     return <Loading />
