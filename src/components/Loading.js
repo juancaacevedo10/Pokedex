@@ -3,7 +3,7 @@ import '../styles/Loading.css'
 
 const Loading = () => (
   <div className='alignLoading'>
-    <div className='loader'>Loading...</div> 
+    <div className='loader'>Loading...</div>
   </div>
 )
 

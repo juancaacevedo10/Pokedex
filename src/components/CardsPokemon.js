@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 const CardsPokemon = ({ name, picture, number, types, abilities, pictureBack, weightPokemon, heightPokemon, evolution }) => {
+  console.log(evolution)
   const [show, setShow] = React.useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
