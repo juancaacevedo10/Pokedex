@@ -23,7 +23,6 @@ const useStyles = makeStyles({
 const CardsPokemon = () => {
     const classes = useStyles();
     return ( 
-<<<<<<< HEAD
         <>
         <Card className={classes.root}>
       <CardActionArea>
@@ -50,13 +49,6 @@ const CardsPokemon = () => {
     
 </>
     )
-=======
-        <div>
-        <h3>What is that pokemon?</h3>
-        </div>
-        
-     );
->>>>>>> abf8529b6547474282368d7c53760053946ad7e3
 }
  
 export default CardsPokemon;
