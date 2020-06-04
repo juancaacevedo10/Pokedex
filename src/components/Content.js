@@ -24,9 +24,9 @@ const Content = () => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
         const data = await response.json()
         arrayPokemon.push(data)
-        const responseEvolution = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${i}`)
+        const responseEvolution = await fetch(data.species.url)
         const dataEvolution = await responseEvolution.json()
-        arrayEvolution.push(dataEvolution)
+        arrayEvolution.push(dataEvolution.evolves_from_species)
       }
       setTimeout(() => {
         setData({
@@ -53,6 +53,7 @@ const Content = () => {
   if (data.loading) {
     return <Loading />
   }
+
 
   return (
     <div>
