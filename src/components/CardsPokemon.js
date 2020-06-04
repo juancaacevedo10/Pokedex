@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 
-const CardsPokemon = ({ name, picture, number, types, evolution }) => {
+const CardsPokemon = ({ name, picture, number, types, abilities, pictureBack, weightPokemon, heightPokemon, evolution }) => {
   return (
     <div className='col-12 col-sm-6 col-md-3 mt-4'>
       <Card className='card border-primary'>
@@ -12,8 +12,14 @@ const CardsPokemon = ({ name, picture, number, types, evolution }) => {
           pathname: '/details',
           state: {
             nombre: name,
-            photo: picture,
-            evo: evolution
+            imagen: picture,
+            id: number,
+            tipos: types,
+            habilidades: abilities,
+            imagenback: pictureBack,
+            peso: weightPokemon,
+            altura: heightPokemon,
+            evolucion: evolution
           }
         }}
         >

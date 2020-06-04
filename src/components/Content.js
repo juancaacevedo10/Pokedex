@@ -26,7 +26,12 @@ const Content = () => {
         arrayPokemon.push(data)
         const responseEvolution = await fetch(data.species.url)
         const dataEvolution = await responseEvolution.json()
-        arrayEvolution.push(dataEvolution.evolves_from_species)
+        if (dataEvolution.evolves_from_species !== null) {
+          arrayEvolution.push(dataEvolution.evolves_from_species.name)
+        } else {
+          arrayEvolution.push(null)
+        }
+        
       }
       setTimeout(() => {
         setData({
@@ -44,7 +49,7 @@ const Content = () => {
     const names = e.target.value
     const info = pokeBackup
     const result = info.filter(pokemon =>
-      pokemon.name.indexOf(names) > -1)
+      pokemon.name.indexOf(names.toLowerCase()) > -1)
     setData({
       pokemons: result
     })
@@ -67,8 +72,7 @@ const Content = () => {
             <CardGroup>
               {data.pokemons.map((pokemon, index) => {
                 return <CardsPokemon
-                  key={index}
-                  name={pokemon.name}
+                  key={index} name={pokemon.name}
                   picture={pokemon.sprites.front_default}
                   number={pokemon.id}
                   types={pokemon.types}
