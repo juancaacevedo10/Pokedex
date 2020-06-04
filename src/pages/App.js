@@ -1,10 +1,16 @@
 import React from 'react'
-import '../styles/App.css'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Content from '../components/Content'
+import DetailsPokemon from '../components/DetailsPokemon'
 
-function App () {
+const App = () => {
   return (
-    <Content />
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Content} />
+        <Route exact path='/details' component={DetailsPokemon} />
+      </Switch>
+    </BrowserRouter>
   )
 }
 
