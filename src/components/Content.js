@@ -8,10 +8,10 @@ import Loading from './Loading'
 const Content = () => {
   const [data, setData] = useState({
     pokemons: [],
-    evolution: [],
     loading: false
   })
   const [pokeBackup, setPokeBackup] = useState([])
+  const [evolution, setEvolution] = useState([])
 
   useEffect(() => {
     setData({
@@ -31,10 +31,10 @@ const Content = () => {
       setTimeout(() => {
         setData({
           pokemons: arrayPokemon,
-          evolution: arrayEvolution,
           loading: false
         })
         setPokeBackup(arrayPokemon)
+        setEvolution(arrayEvolution)
       }, 1500)
     }
     fetchData()
@@ -53,8 +53,8 @@ const Content = () => {
   if (data.loading) {
     return <Loading />
   }
-  return (
 
+ return (
     <div>
       <h1 className='text-center'>Pokedex</h1>
       <Form inline className='justify-content-center'>
@@ -74,7 +74,7 @@ const Content = () => {
                   pictureBack={pokemon.sprites.back_default}
                   weightPokemon={pokemon.weight}
                   heightPokemon={pokemon.height}
-                  evolution={data.evolution[index].chain}
+                  evolution={evolution[index]}
                 />
               })}
             </CardGroup>

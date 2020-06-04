@@ -8,8 +8,8 @@ import Col from 'react-bootstrap/Col'
 const DetailsPokemon = (props) => {
   const state = props.location.state
   console.log(props)
-  let peso= state.peso/10
-  let altura = state.altura/10
+  const peso = state.peso / 10
+  const altura = state.altura / 10
   return (
 
     <div className='container mt-4'>
@@ -19,40 +19,36 @@ const DetailsPokemon = (props) => {
 
           <Row>
             <Col xs={12} md={4}>
-            <Card.Img className='img-fluid rounded mx-auto d-block ' style={{ width: '30%' }} variant='top' src={state.imagenback} />
+              <Card.Img className='img-fluid rounded mx-auto d-block ' style={{ width: '30%' }} variant='top' src={state.imagenback} />
             </Col>
-            
+
             <Col xs={12} md={4}>
-            <Card.Img className='img-fluid rounded mx-auto d-block ' style={{ width: '30%' }} variant='top' src={state.imagen} />
+              <Card.Img className='img-fluid rounded mx-auto d-block ' style={{ width: '30%' }} variant='top' src={state.imagen} />
             </Col>
-        
             <Col xs={12} md={4}>
-            <h1>ability</h1>
-            <ul>
-            {state.habilidades.map((habil, key) => { return <li key={key + 1} className='text-dark' > {habil.ability.name} </li> })}
-            </ul>
-            
+              <h1>ability</h1>
+              <ul>
+                {state.habilidades.map((habil, key) => { return <li key={key + 1} className='text-dark'> {habil.ability.name} </li> })}
+              </ul>
             </Col>
-            </Row>          
-          
-          
+          </Row>
           <Card.Title>
             Name: {state.nombre}
           </Card.Title>
           <Card.Body className='bg-primary text-white'>
             <Row>
               <Col xs={6} md={4}>
-              <h3>
+                <h3>
                 weight:
                 </h3>
                 {peso} kg
               </Col>
               <Col xs={6} md={4}>
-                 <h3>
+                <h3>
                 height:
-                 </h3>
+                </h3>
                 {altura} m
-             </Col>
+              </Col>
               <Col xs={6} md={4}>
                 <h3>
                 types:
@@ -60,9 +56,7 @@ const DetailsPokemon = (props) => {
                 {state.tipos.map((tipo, key) => { return <Button key={key + 1} className='ml-2' variant='outline-light'> {tipo.type.name} </Button> })}
               </Col>
             </Row>
-           
           </Card.Body>
-          
         </Card.Body>
         <Card.Footer className='bg-primary'>
         </Card.Footer>
