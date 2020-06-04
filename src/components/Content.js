@@ -66,8 +66,7 @@ const Content = () => {
             <CardGroup>
               {data.pokemons.map((pokemon, index) => {
                 return <CardsPokemon
-                  key={index}
-                  name={pokemon.name}
+                  key={index} name={pokemon.name}
                   picture={pokemon.sprites.front_default}
                   number={pokemon.id}
                   types={pokemon.types}
