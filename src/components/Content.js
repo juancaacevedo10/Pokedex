@@ -24,9 +24,14 @@ const Content = () => {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
         const data = await response.json()
         arrayPokemon.push(data)
-        const responseEvolution = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${i}`)
+        const responseEvolution = await fetch(data.species.url)
         const dataEvolution = await responseEvolution.json()
-        arrayEvolution.push(dataEvolution)
+        if (dataEvolution.evolves_from_species !== null) {
+          arrayEvolution.push(dataEvolution.evolves_from_species.name)
+        } else {
+          arrayEvolution.push(null)
+        }
+        
       }
       setTimeout(() => {
         setData({
@@ -54,7 +59,8 @@ const Content = () => {
     return <Loading />
   }
 
- return (
+
+  return (
     <div>
       <h1 className='text-center'>Pokedex</h1>
       <Form inline className='justify-content-center'>
@@ -82,7 +88,6 @@ const Content = () => {
         </div>
       </div>
     </div>
-
   )
 }
 

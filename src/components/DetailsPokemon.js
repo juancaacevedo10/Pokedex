@@ -23,7 +23,7 @@ const DetailsPokemon = (props) => {
 
             <Col xs={6} md={6}>
               <div className='d-flex justify-content-end'>
-                <Link to={{ pathname: '/' }}>
+                <Link to={{ pathname: '/Pokedex' }}>
                   <button type='button' className='btn btn-danger rounded-circle d-flex justify-content-end '> x</button>
                 </Link>
               </div>

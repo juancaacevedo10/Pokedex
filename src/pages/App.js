@@ -8,7 +8,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' component={Content} />
+          <Route exact path='/Pokedex' component={Content} />
           <Route exact path='/details' component={DetailsPokemon} />
         </Switch>
       </BrowserRouter>
