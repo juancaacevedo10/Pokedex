@@ -5,12 +5,14 @@ import DetailsPokemon from '../components/DetailsPokemon'
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path='/' component={Content} />
-        <Route exact path='/details' component={DetailsPokemon} />
-      </Switch>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={Content} />
+          <Route exact path='/details' component={DetailsPokemon} />
+        </Switch>
+      </BrowserRouter>
+    </>
   )
 }
 

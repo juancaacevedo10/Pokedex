@@ -8,8 +8,7 @@ import Button from 'react-bootstrap/Button'
 // import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
 
-const CardsPokemon = ({ name, picture, number, types }) => {
-
+const CardsPokemon = ({name, picture, number, types, evolution}) => {
   return (
     <div className='col-12 col-sm-6 col-md-3 mt-4'>
       <Card className='card border-primary'>
@@ -17,7 +16,8 @@ const CardsPokemon = ({ name, picture, number, types }) => {
           pathname: '/details',
           state: {
             nombre: name,
-            photo: picture
+            photo: picture,
+            evo: evolution
           }
         }}>
           <Card.Img className='img-fluid rounded mx-auto d-block ' style={{ width: '60%' }} variant='top' src={picture} />
