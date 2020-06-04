@@ -44,7 +44,7 @@ const Content = () => {
     const names = e.target.value
     const info = pokeBackup
     const result = info.filter(pokemon =>
-      pokemon.name.indexOf(names) > -1)
+      pokemon.name.indexOf(names.toLowerCase()) > -1)
     setData({
       pokemons: result
     })
