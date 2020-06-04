@@ -54,7 +54,7 @@ const Content = () => {
     return <Loading />
   }
 
- return (
+  return (
     <div>
       <h1 className='text-center'>Pokedex</h1>
       <Form inline className='justify-content-center'>
@@ -83,7 +83,6 @@ const Content = () => {
         </div>
       </div>
     </div>
-
   )
 }
 
