@@ -8,14 +8,10 @@ import Loading from './Loading'
 const Content = () => {
   const [data, setData] = useState({
     pokemons: [],
-    pokeBackup: [],
     evolution: [],
     loading: false
   })
-  // let [pokemons, setPokemons] = useState([])
-  // let [pokeBackup, setPokeBackup] = useState([])
-  // let [evolution, setEvolution] = useState([])
-  // let [loading, setLoading] = useState(false)
+  const [pokeBackup, setPokeBackup] = useState([])
 
   useEffect(() => {
     setData({
@@ -35,10 +31,10 @@ const Content = () => {
       setTimeout(() => {
         setData({
           pokemons: arrayPokemon,
-          pokeBackup: arrayPokemon,
           evolution: arrayEvolution,
           loading: false
         })
+        setPokeBackup(arrayPokemon)
       }, 1500)
     }
     fetchData()
@@ -46,7 +42,7 @@ const Content = () => {
 
   const handleChange = (e) => {
     const names = e.target.value
-    const info = data.pokeBackup
+    const info = pokeBackup
     const result = info.filter(pokemon =>
       pokemon.name.indexOf(names) > -1)
     setData({
@@ -61,8 +57,8 @@ const Content = () => {
 
     <div>
       <h1 className='text-center'>Pokedex</h1>
-      <Form inline>
-        <FormControl type='text' placeholder='Search' className=' mr-sm-3' onChange={handleChange} />
+      <Form inline className='justify-content-center'>
+        <FormControl type='text' placeholder='Search' className='col-3 mr-sm-2 text-center' onChange={handleChange} />
       </Form>
       <div className='container-fluid'>
         <div className='row '>
