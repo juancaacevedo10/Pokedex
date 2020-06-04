@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Link } from 'react-router-dom'
 
 const DetailsPokemon = (props) => {
   const state = props.location.state
@@ -15,7 +16,19 @@ const DetailsPokemon = (props) => {
     <div className='container mt-4'>
       <Card className='card border-primary'>
         <Card.Body className='text-primary card border-primary'>
-          <Card.Title>ID/ {` ${state.id}`}</Card.Title>
+          <Row>
+            <Col xs={6} md={6}>
+              <Card.Title>ID/ {` ${state.id}`}</Card.Title>
+            </Col>
+
+            <Col xs={6} md={6}>
+              <div className='d-flex justify-content-end'>
+                <Link to={{ pathname: '/' }}>
+                  <button type='button' className='btn btn-danger rounded-circle d-flex justify-content-end '> x</button>
+                </Link>
+              </div>
+            </Col>
+          </Row>
 
           <Row>
             <Col xs={12} md={4}>
