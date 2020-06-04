@@ -54,12 +54,7 @@ const Content = () => {
     })
   }
 
-<<<<<<< HEAD
-
-  if (loading) {
-=======
   if (data.loading) {
->>>>>>> 6fb3da1b4a90ea5cc6de7462a26b2b1e24ddbfc9
     return <Loading />
   }
   return (
